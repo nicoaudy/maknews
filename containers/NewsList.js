@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { styles } from './StyleNews'
 import {
   Image,
   Platform,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
@@ -11,11 +11,12 @@ import {
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchNews } from '../../redux/actions/fetchNewsAction'
+import { fetchNews } from '../redux/actions/fetchNewsAction'
 
-export default class NewsList extends Component {
+class NewsList extends Component {
+
   componentDidMount(){
-    this.props.fetchNews() 
+    this.props.fetchNews()
   }
 
   render() {
@@ -25,8 +26,8 @@ export default class NewsList extends Component {
     if(isFetching){
       return (
         <View>
-          <Text>Loading...</Text> 
-        </View> 
+          <Text>From News List Containers Loading...</Text>
+        </View>
       )
     } else {
       return (
@@ -46,20 +47,21 @@ export default class NewsList extends Component {
             )) : (<Text>Foo</Text>)}
           </ScrollView>
         </View>
-      ) 
+      )
     }
+  }
 }
 
 const mapStateToProps = state => {
   return {
-    news: state.news       
+    news: state.news
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    ...bindActionCreators({ fetchNews }, dispatch) 
+    ...bindActionCreators({ fetchNews }, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(NewsList)
