@@ -9,9 +9,13 @@ import {
   View,
 } from 'react-native';
 
+import Placeholder from 'rn-placeholder';
+
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchNews } from '../redux/actions/fetchNewsAction'
+
+import NewsItem from '../components/news/Item'
 
 class NewsList extends Component {
 
@@ -26,7 +30,33 @@ class NewsList extends Component {
     if(isFetching){
       return (
         <View>
-          <Text>From News List Containers Loading...</Text>
+          <Placeholder.ImageContent
+            size={60}
+            animate="fade"
+            lineNumber={5}
+            lineSpacing={5}
+            lastLineWidth="30%"
+            color="grey"
+          >
+          </Placeholder.ImageContent>
+          <Placeholder.ImageContent
+            size={60}
+            animate="fade"
+            lineNumber={5}
+            lineSpacing={5}
+            lastLineWidth="30%"
+            color="grey"
+          >
+          </Placeholder.ImageContent>
+          <Placeholder.ImageContent
+            size={60}
+            animate="fade"
+            lineNumber={5}
+            lineSpacing={5}
+            lastLineWidth="30%"
+            color="grey"
+          >
+          </Placeholder.ImageContent>
         </View>
       )
     } else {
@@ -37,14 +67,10 @@ class NewsList extends Component {
               <Text>Render Headline News</Text>
             </View>
             { news.data ? news.data.map((res) => (
-              <View style={styles.getStartedContainer} key={res.id}>
-                <Image
-                  source={{uri: res.image_cover }}
-                />
-                <Text>{res.title}</Text>
-                <Text>{res.body}</Text>
+              <View key={res.id}>
+                <NewsItem title={res.title} image={res.image_cover}  />
               </View>
-            )) : (<Text>Foo</Text>)}
+            )) : (<Text>Internal Server Error</Text>)}
           </ScrollView>
         </View>
       )
