@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://b49d67de.ngrok.io'
+export const BASE_URL = 'http://8e48eb9f.ngrok.io'
 export const API_FETCH_NEWS = BASE_URL + '/api/contents'
 
 export const FETCHING_NEWS = 'FETCHING_NEWS'

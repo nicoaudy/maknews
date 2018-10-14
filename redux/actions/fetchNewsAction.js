@@ -1,33 +1,31 @@
 import axios from 'axios'
-import { FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE, FETCHING_NEWS } from '../constansts'
+import { FETCH_NEWS_SUCCESS, FETCH_NEWS_FAILURE, FETCHING_NEWS, API_FETCH_NEWS   } from '../constants'
 
-export default fetchNews(){
+export function fetchNews() {
   return (dispatch) => {
     dispatch(getNews()) 
-
-    return (axios.get(url))
-      .then(res => res.json())
-      .then(json => {
-        return (dispatch(getNewsSuccess(json))) 
+    axios.get(API_FETCH_NEWS)
+      .then((res) => {
+        return (dispatch(getNewsSuccess(res.data)))
       })
-      .catch(err => dispatch(getNewsFailure(err)))
+      .catch((err) => dispatch(getNewsFailure(err)))
   }
 }
 
-const getNews = () => {
+function getNews() {
   return {
     type: FETCHING_NEWS 
   }
 }
 
-const getNewsSuccess = data => {
+function getNewsSuccess(data) {
   return {
     type: FETCH_NEWS_SUCCESS,
     data
   }
 }
 
-const getNewsFailure = () => {
+function getNewsFailure() {
   return {
     type: FETCH_NEWS_FAILURE 
   }

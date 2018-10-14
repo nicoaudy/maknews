@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({})
+import news from './news'
+
+export default combineReducers({
+  news
+})

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import {
   Image,
   Platform,
@@ -11,20 +11,9 @@ import {
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { fetchNews } from '../redux/actions/fetchNewsAction'
+import { fetchNews } from '../../redux/actions/fetchNewsAction'
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'MakNews',
-    headerStyle: {
-      backgroundColor: 'black' 
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold' 
-    }
-  };
-
+export default class NewsList extends Component {
   componentDidMount(){
     this.props.fetchNews() 
   }
@@ -59,44 +48,7 @@ class HomeScreen extends React.Component {
         </View>
       ) 
     }
-  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  getStartedContainer: {
-    marginHorizontal: 10,
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 20,
-      },
-    }),
-  },
-});
-
 
 const mapStateToProps = state => {
   return {
