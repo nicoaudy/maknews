@@ -15,7 +15,7 @@ class HomeScreen extends React.Component {
 
   render() {
     return (
-      <NewsList/>
+      <NewsList navigation={this.props.navigation} />   // lempar navigation ke chil
     )
   }
 }

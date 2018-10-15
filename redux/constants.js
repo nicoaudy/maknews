@@ -1,6 +1,12 @@
-export const BASE_URL = 'http://8e48eb9f.ngrok.io'
+export const BASE_URL = 'http://192.168.10.51:8000'
 export const API_FETCH_NEWS = BASE_URL + '/api/contents'
+export const API_FETCH_DETAIL_NEWS = BASE_URL + '/api/contents/'
 
 export const FETCHING_NEWS = 'FETCHING_NEWS'
 export const FETCH_NEWS_SUCCESS = 'FETCH_NEWS_SUCCESS'
 export const FETCH_NEWS_FAILURE = 'FETCH_NEWS_FAILURE'
+
+export const FETCHING_DETAIL_NEWS = 'FETCHING_DETAIL_NEWS'
+export const FETCH_DETAIL_NEWS_SUCCESS = 'FETCH_DETAIL_NEWS_SUCCESS'
+export const FETCH_DETAIL_NEWS_FAILURE = 'FETCH_DETAIL_NEWS_FAILURE'
+

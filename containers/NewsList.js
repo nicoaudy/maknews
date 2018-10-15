@@ -67,9 +67,16 @@ class NewsList extends Component {
               <Text>Render Headline News</Text>
             </View>
             { news.data ? news.data.map((res) => (
-              <View key={res.id}>
+              <TouchableOpacity 
+                key={res.id} 
+                onPress={() => this.props.navigation.navigate('Detail', {
+                  newsId: res.id,
+                  slug: res.title
+                  })
+                }
+              >
                 <NewsItem title={res.title} image={res.image_cover}  />
-              </View>
+              </TouchableOpacity>
             )) : (<Text>Internal Server Error</Text>)}
           </ScrollView>
         </View>
