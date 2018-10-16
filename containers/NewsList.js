@@ -15,7 +15,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { fetchNews } from '../redux/actions/fetchNewsAction'
 
-import NewsItem from '../components/news/Item'
+const MAX_LENGTH = 120;
 
 class NewsList extends Component {
 
@@ -67,16 +67,24 @@ class NewsList extends Component {
               <Text>Render Headline News</Text>
             </View>
             { news.data ? news.data.map((res) => (
-              <TouchableOpacity 
-                key={res.id} 
-                onPress={() => this.props.navigation.navigate('Detail', {
-                  newsId: res.id,
-                  slug: res.title
+              <View key={res.id} style={{  width: 300, height: 350, alignItems: 'center', justifyContent: 'center', margin: 28, borderColor: 'black',
+                borderWidth: 1,  borderRadius: 10  }}>
+                <Image
+                  source={{ uri: res.image_cover }}
+                  style={{ flex: 1, height: 2, width: 300, borderRadius: 10}}
+                />
+                <TouchableOpacity
+                  key={res.id}
+                  onPress={() => this.props.navigation.navigate('Detail', {
+                    newsId: res.id,
+                    slug: res.title
                   })
-                }
-              >
-                <NewsItem title={res.title} image={res.image_cover}  />
-              </TouchableOpacity>
+                  }
+                >
+                  <Text style={{ fontSize: 25, textAlign: 'center', marginBottom: 10 }}>{res.title}</Text>
+                  <Text style={{ margin: 10 }}>{`${res.body.substring(0, MAX_LENGTH)} ...`}</Text>
+                </TouchableOpacity>
+              </View>
             )) : (<Text>Internal Server Error</Text>)}
           </ScrollView>
         </View>

@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://192.168.10.51:8000'
+export const BASE_URL = 'http://192.168.0.12:8000'
 export const API_FETCH_NEWS = BASE_URL + '/api/contents'
 export const API_FETCH_DETAIL_NEWS = BASE_URL + '/api/contents/'
 

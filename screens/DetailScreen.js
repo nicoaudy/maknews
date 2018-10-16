@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { View, Text, Image } from 'react-native'
+import { ScrollView, Text, Image } from 'react-native'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux' 
@@ -26,13 +26,14 @@ class DetailScreen extends React.Component {
   render() {
     return (
       this.props.newsDetail && (
-      <View style={{ flex: 1, flexDirection: 'column'}}>
+      <ScrollView key={this.props.newsDetail.data.id} style={{ flex: 1, flexDirection: 'column'}}>
         <Image 
-          style={{flex: 1}}
-          source={{uri: 'https://picsum.photos/200/300'}} 
+          style={{flex: 1, height: 350}}
+          source={{uri: this.props.newsDetail.data.image_cover}} 
         />
-        <Text>{this.props.newsDetail.data.title}</Text> 
-      </View>
+        <Text style={{ fontSize: 40, margin: 10 }}>{this.props.newsDetail.data.title}</Text> 
+        <Text style={{ margin: 10 }}>{this.props.newsDetail.data.body}</Text> 
+      </ScrollView>
       )
     )
   }
